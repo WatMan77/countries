@@ -1,18 +1,10 @@
-import React from "react";
-import { countries } from "countries-list";
 import Select from "react-select"
 
-const countriesList = Object.values(countries).map(c => {
-    return { value: c.name, label: c.name }
-})
-
-
-export const CountriesDropdown = ({ setCountry }) => {
-    console.log("countries?")
-    console.log(countriesList)
+const CountriesDropdown = ({ countryNames, setCountry }) => {
 
     return (
-        <Select options={countriesList}/>
+        <Select options={countryNames} onChange={(e) => setCountry(e.value)} placeholder="Select country..." />
     )
-
 }
+
+export default CountriesDropdown
