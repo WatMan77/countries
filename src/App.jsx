@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import CountriesDropdown from './CountriesDropdown'
+import CountryInfoDetails from './CountryDetails'
 
 const App = () => {
   const [country, setCountry] = useState("")
@@ -8,7 +9,6 @@ const App = () => {
 
   // Fetch all the data of the countries and save it
   useEffect(() => {
-    console.log("Fetching countries")
     const fetchCountries = async () => {
       try {
         const response = await fetch("https://restcountries.com/v3.1/all")
@@ -19,6 +19,7 @@ const App = () => {
           return { ...d, value: d.name.common, label: d.name.common }
         }))
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log("Error in fetching countries", e)
       }
     }
@@ -27,8 +28,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    console.log("Changed to", country)
-    if(countryInfo){
+    if(country){
       const foundCountry = countriesInfo.find(c => c.name.common === country)
       if(foundCountry){
         setCountryInfo(foundCountry)
@@ -40,6 +40,7 @@ const App = () => {
   return (
     <>
       <CountriesDropdown countryNames={countriesInfo} setCountry={setCountry} />
+      <CountryInfoDetails countryInfo={countryInfo}/>
     </>
   )
 }
