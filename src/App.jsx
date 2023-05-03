@@ -41,10 +41,10 @@ const App = () => {
   }, [country, countriesInfo])
 
   return (
-    <>
+    <div className="container">
       <CountriesDropdown countryNames={countriesInfo} setCountry={setCountry} />
       <CountryInfoDetails countryInfo={countryInfo} />
-    </>
+    </div>
   )
 }
 
