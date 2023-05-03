@@ -1,3 +1,4 @@
+import "./App.css"
 import { useEffect, useState } from 'react'
 import CountriesDropdown from './CountriesDropdown'
 import CountryInfoDetails from './CountryDetails'
@@ -15,9 +16,11 @@ const App = () => {
         const data = await response.json();
 
         // Change the data so the "Select" component can use the names in the dropdown
-        setCountriesInfo(data.map(d => {
-          return { ...d, value: d.name.common, label: d.name.common }
-        }))
+        setCountriesInfo(
+          data.map(d => {
+            return { ...d, value: d.name.common, label: d.name.common }
+          }).sort((a, b) => a.value < b.value ? -1 : 1)
+        )
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log("Error in fetching countries", e)
@@ -28,19 +31,19 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    if(country){
+    if (country) {
       const foundCountry = countriesInfo.find(c => c.name.common === country)
-      if(foundCountry){
+      if (foundCountry) {
         setCountryInfo(foundCountry)
       }
     }
 
-  }, [country, countriesInfo, countryInfo])
+  }, [country, countriesInfo])
 
   return (
     <>
       <CountriesDropdown countryNames={countriesInfo} setCountry={setCountry} />
-      <CountryInfoDetails countryInfo={countryInfo}/>
+      <CountryInfoDetails countryInfo={countryInfo} />
     </>
   )
 }
