@@ -17,7 +17,7 @@ const CountryInfoDetails = ({ countryInfo }) => {
                 image={countryInfo.flags.png}
                 component="img"
             />
-            <CardContent>
+            <CardContent className="card-content">
                 <Typography gutterBottom variant="h4">
                     {countryInfo.name.common}
                 </Typography>
