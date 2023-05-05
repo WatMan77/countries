@@ -2,6 +2,7 @@ import "./App.css"
 import { useEffect, useState } from 'react'
 import CountriesDropdown from './CountriesDropdown'
 import CountryInfoDetails from './CountryDetails'
+import Headline from "./Headline"
 
 const App = () => {
   const [country, setCountry] = useState("")
@@ -60,10 +61,13 @@ const App = () => {
   }, [country])
 
   return (
-    <div className="container">
-      <CountriesDropdown countryNames={countryNames} setCountry={setCountry} />
-      <CountryInfoDetails countryInfo={countryInfo} />
-    </div>
+    <>
+      <Headline />
+      <div className="container">
+        <CountriesDropdown countryNames={countryNames} setCountry={setCountry} />
+        <CountryInfoDetails countryInfo={countryInfo} />
+      </div>
+    </>
   )
 }
 
