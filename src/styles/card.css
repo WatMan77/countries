@@ -1,0 +1,9 @@
+.card {
+    background: rgb(219, 213, 219);
+    min-width: 1em;
+    margin-left: 5em;
+}
+
+.card-content {
+    background-color: rgb(245, 245, 253);
+}

@@ -60,10 +60,10 @@ const App = () => {
   }, [country])
 
   return (
-    <>
+    <div className="container">
       <CountriesDropdown countryNames={countryNames} setCountry={setCountry} />
       <CountryInfoDetails countryInfo={countryInfo} />
-    </>
+    </div>
   )
 }
 
